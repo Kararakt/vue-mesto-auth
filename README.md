@@ -19,7 +19,7 @@
 - HTML
 - CSS
 - Javascript
-- Vue
+- Vue 3
 - Vuex
 
 ## Требования

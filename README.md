@@ -32,7 +32,7 @@
 ```sh
 git@github.com:Kararakt/vue-mesto-auth.git
 ```
-2. Установите все необходимые NPM пакеты
+2. Установите все необходимые PNPM пакеты
 ```sh
 pnpm install
 ```

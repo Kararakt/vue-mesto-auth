@@ -1,0 +1,11 @@
+.elements {
+  max-width: 55rem;
+  padding-bottom: 4.125rem;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 540px) {
+  .elements {
+    padding-bottom: 3rem;
+  }
+}

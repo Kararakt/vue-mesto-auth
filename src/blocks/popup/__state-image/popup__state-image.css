@@ -1,0 +1,7 @@
+.popup__state-image {
+  height: 7.5rem;
+  width: 7.5rem;
+  display: block;
+  object-fit: cover;
+  margin: 0 auto;
+}

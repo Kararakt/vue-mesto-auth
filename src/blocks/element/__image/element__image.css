@@ -1,0 +1,9 @@
+.element__image {
+  height: 17.625rem;
+  width: 17.625rem;
+  display: block;
+  object-fit: cover;
+  border-radius: 0.625rem 0.625rem 0 0;
+  cursor: pointer;
+  color: #000;
+}

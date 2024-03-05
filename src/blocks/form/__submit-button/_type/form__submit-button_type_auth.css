@@ -1,0 +1,23 @@
+.form__submit-button_type_auth {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0.25rem 0.25rem rgb(0, 0, 0, 0.25);
+  margin-top: 11.3125rem;
+}
+
+.form__submit-button_type_auth:hover {
+  opacity: 0.85;
+  background-color: #fff;
+}
+
+.form__submit-button_type_auth:disabled {
+  background-color: #fff;
+  border: 0;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .form__submit-button_type_auth {
+    margin-top: 8.625rem;
+  }
+}

@@ -1,0 +1,17 @@
+.elements__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 17.625rem);
+  grid-auto-rows: 22.5625rem;
+  gap: 1.25rem 1.0625rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .elements__container {
+    justify-content: center;
+    margin: 0 1.1875rem;
+    gap: 1.25rem;
+  }
+}

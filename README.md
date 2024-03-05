@@ -42,4 +42,4 @@ pnpm dev
 ```
 
 ## Ссылка на проект
-?
+https://vue-mesto-auth.vercel.app

@@ -18,7 +18,7 @@
 - Vite
 - HTML
 - CSS
-- Javascript
+- JavaScript
 - Vue 3
 - Vuex
 

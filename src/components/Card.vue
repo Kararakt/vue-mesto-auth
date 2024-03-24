@@ -1,27 +1,16 @@
-<script setup>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+<script setup lang="ts">
+import { CardData } from '../models/models';
 
 import MyButton from './UI/MyButton.vue';
 
-const props = defineProps({
-  card: {
-    type: Object,
-    required: true,
-  },
-  onCardClick: {
-    type: Function,
-    required: true,
-  },
-  onCardLike: {
-    type: Function,
-    required: true,
-  },
-  onCardDelete: {
-    type: Function,
-    required: true,
-  },
-});
+interface Props {
+  card: CardData;
+  onCardClick: (card: CardData) => void;
+  onCardLike: (card: CardData) => void;
+  onCardDelete: (card: CardData) => void;
+}
+
+const props = defineProps<Props>();
 
 const store = useStore();
 const currentUser = computed(() => store.state.user.user);

@@ -1,6 +1,5 @@
-<script setup>
-import { computed, onMounted, ref, reactive } from 'vue';
-import { useStore } from 'vuex';
+<script setup lang="ts">
+import { CardData } from '../models/models';
 
 import MyButton from '../components/UI/MyButton.vue';
 import Card from '../components/Card.vue';
@@ -14,23 +13,22 @@ const store = useStore();
 
 const user = computed(() => store.state.user.user);
 const cards = computed(() => store.state.cards.cards);
-const isCards = computed(() => cards.value.length > 0);
 
-const selectedCard = ref(null);
-const selectedCardDelete = ref(null);
+const selectedCard = ref<Partial<CardData>>({});
+const selectedCardDelete = ref<CardData | null>(null);
 
-const isImagePopup = ref(false);
-const isConfirmPopup = ref(false);
-const isAddPopup = ref(false);
-const isEditAvatarPopup = ref(false);
-const IsEditProfilePopup = ref(false);
+const isImagePopup = ref<boolean>(false);
+const isConfirmPopup = ref<boolean>(false);
+const isAddPopup = ref<boolean>(false);
+const isEditAvatarPopup = ref<boolean>(false);
+const IsEditProfilePopup = ref<boolean>(false);
 
-const handleCardDeleteClick = (card) => {
+const handleCardDeleteClick = (card: CardData) => {
   isConfirmPopup.value = true;
   selectedCardDelete.value = card;
 };
 
-const handleSelectedCardClick = (card) => {
+const handleSelectedCardClick = (card: CardData) => {
   selectedCard.value = card;
   isImagePopup.value = true;
 };
@@ -55,26 +53,26 @@ const closeAllPopups = () => {
   IsEditProfilePopup.value = false;
 };
 
-const handleCardDelete = (card) => {
+const handleCardDelete = (card: CardData) => {
   store.dispatch('cards/deleteCard', {
     cardId: card._id,
     callback: closeAllPopups,
   });
 };
 
-const handleCardLike = (card) => {
+const handleCardLike = (card: CardData) => {
   store.dispatch('cards/likeCard', card);
 };
 
-const handleAddPlace = (card) => {
+const handleAddPlace = (card: { name: string; link: string }) => {
   store.dispatch('cards/addCard', { card, callback: closeAllPopups });
 };
 
-const handleUpdateAvatar = (user) => {
+const handleUpdateAvatar = (user: { avatar: string }) => {
   store.dispatch('user/updateAvatar', { user, callback: closeAllPopups });
 };
 
-const handleUpdateUser = (user) => {
+const handleUpdateUser = (user: { name: string; about: string }) => {
   store.dispatch('user/updateUser', { user, callback: closeAllPopups });
 };
 
@@ -124,7 +122,7 @@ onMounted(() => {
   </section>
 
   <section class="elements">
-    <ul class="elements__container" v-if="isCards">
+    <ul class="elements__container">
       <li class="element" v-for="card in cards">
         <Card
           :card="card"
@@ -134,9 +132,6 @@ onMounted(() => {
         />
       </li>
     </ul>
-    <p class="elements__no-cards" v-else>
-      Упс, кажется, карточек еще нет. Создайте первую!
-    </p>
   </section>
 
   <ImagePopup

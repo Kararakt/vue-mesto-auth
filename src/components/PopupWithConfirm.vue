@@ -1,35 +1,31 @@
-<script setup>
-import { computed } from 'vue';
+<script setup lang="ts">
+import { CardData } from '../models/models';
 
 import MyPopup from './UI/MyPopup.vue';
 import MyButton from './UI/MyButton.vue';
 
-const props = defineProps({
-  card: {
-    type: [Object, null],
-    required: true,
-  },
-  modelValue: {
-    type: Boolean,
-    required: true,
-  },
-  onCardDelete: {
-    type: Function,
-    required: true,
-  },
-  onClose: {
-    type: Function,
-    required: true,
-  },
-});
+interface Props {
+  card: CardData | null;
+  modelValue: boolean;
+  onCardDelete: (card: CardData) => void;
+  onClose: () => void;
+}
+
+const emit = defineEmits<{
+  (event: 'update:modelValue', value: boolean): void;
+}>();
+
+const props = defineProps<Props>();
 
 const modelUpdate = computed({
   get: () => props.modelValue,
-  set: (newValue) => emit('update:modelValue', newValue),
+  set: (newValue: boolean) => emit('update:modelValue', newValue),
 });
 
 const handleSubmit = () => {
-  props.onCardDelete(props.card);
+  if (props.card) {
+    props.onCardDelete(props.card);
+  }
 };
 </script>
 

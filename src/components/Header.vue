@@ -1,8 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import logo from '/logo.svg';
 
-import { computed, ref, onMounted, onUnmounted, watch } from 'vue';
-import { useStore } from 'vuex';
 import router from '../router/router';
 
 import MyButton from './UI/MyButton.vue';
@@ -12,17 +10,17 @@ const store = useStore();
 const loggedIn = computed(() => store.state.user.loggedIn);
 const email = computed(() => store.state.user.user.email);
 
-const active = ref(false);
+const active = ref<boolean>(false);
 
-const menu = ref(null);
-const btn = ref(null);
-const emailD = ref(null);
+const menu = ref<HTMLElement | null>(null);
+const btn = ref<HTMLElement | null>(null);
+const emailD = ref<HTMLElement | null>(null);
 
 const handleActiveMenu = () => {
   active.value = !active.value;
 };
 
-const handleClickOutside = (event) => {
+const handleClickOutside = (event: MouseEvent) => {
   const elements = [menu.value, btn.value, emailD.value];
   if (!elements.some((el) => event.target === el) && active.value) {
     active.value = false;

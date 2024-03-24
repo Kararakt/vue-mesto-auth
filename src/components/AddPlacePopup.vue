@@ -1,33 +1,28 @@
-<script setup>
-import { computed, watch } from 'vue';
-
+<script setup lang="ts">
 import { useFormAndValidation } from '../composables/useFormAndValidation.js';
 
 import MyPopup from './UI/MyPopup.vue';
 import MyInput from './UI/MyInput.vue';
 import MyButton from './UI/MyButton.vue';
 
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    required: true,
-  },
-  onPlaceAdd: {
-    type: Function,
-    required: true,
-  },
-  onClose: {
-    type: Function,
-    required: true,
-  },
-});
+interface Props {
+  modelValue: boolean;
+  onPlaceAdd: (data: { name: string; link: string }) => void;
+  onClose: () => void;
+}
+
+const emit = defineEmits<{
+  (event: 'update:modelValue', value: boolean): void;
+}>();
+
+const props = defineProps<Props>();
 
 const { values, handleChange, errors, isFieldValid, isValid, resetForm } =
   useFormAndValidation();
 
 const modelUpdate = computed({
   get: () => props.modelValue,
-  set: (newValue) => emit('update:modelValue', newValue),
+  set: (newValue: boolean) => emit('update:modelValue', newValue),
 });
 
 const handleSubmit = () => {
@@ -55,8 +50,8 @@ watch(modelUpdate, () => {
           type="text"
           name="name"
           placeholder="Введите название картинки"
-          :minLength="2"
-          :maxLength="30"
+          :minlength="2"
+          :maxlength="30"
           :error="errors.name"
           :confirm="isFieldValid.name"
         />

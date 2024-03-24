@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { computed } from 'vue';
 
 import store from '../store';
 

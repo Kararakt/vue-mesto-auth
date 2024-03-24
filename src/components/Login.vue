@@ -1,12 +1,11 @@
-<script setup>
-import { useFormAndValidation } from '../composables/useFormAndValidation.js';
+<script setup lang="ts">
+import { UserData } from '../models/models';
+import { useFormAndValidation } from '../composables/useFormAndValidation.ts';
 
 import MyInput from './UI/MyInput.vue';
 import MyButton from './UI/MyButton.vue';
 
-const props = defineProps({
-  onLogin: Function,
-});
+const props = defineProps<{ onLogin: (userData: UserData) => void }>();
 
 const { values, handleChange, errors, isFieldValid, isValid } =
   useFormAndValidation();
@@ -24,8 +23,8 @@ const handleSubmit = async () => {
       type="email"
       name="email"
       placeholder="Email"
-      :minLength="10"
-      :maxLength="50"
+      :minlength="10"
+      :maxlength="50"
       :error="errors.email"
       :confirm="isFieldValid.email"
       customClass="input__field_type_auth"
@@ -36,8 +35,8 @@ const handleSubmit = async () => {
       type="password"
       name="password"
       placeholder="Пароль"
-      :minLength="6"
-      :maxLength="40"
+      :minlength="6"
+      :maxlength="40"
       :error="errors.password"
       :confirm="isFieldValid.password"
       customClass="input__field_type_auth"

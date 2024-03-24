@@ -1,16 +1,15 @@
-<script setup>
-import { onMounted } from 'vue';
-import { useStore } from 'vuex';
-
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+<script setup lang="ts">
+import Header from './Header.vue';
+import Footer from './Footer.vue';
 
 const store = useStore();
 
 onMounted(() => {
   const jwt = localStorage.getItem('jwt');
 
-  if (jwt) store.dispatch('user/login');
+  if (jwt) {
+    store.dispatch('user/login');
+  }
 });
 </script>
 

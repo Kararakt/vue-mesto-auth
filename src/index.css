@@ -2,6 +2,7 @@
 @import url("./vendor/fonts/fonts.css");
 
 @import url("./blocks/page/page.css");
+@import url("./blocks/page/__container/page__container.css");
 
 @import url("./blocks/header/header.css");
 @import url("./blocks/header/__logo/header__logo.css");
@@ -55,7 +56,6 @@
 
 @import url("./blocks/elements/elements.css");
 @import url("./blocks/elements/__container/elements__container.css");
-@import url("./blocks/elements/__no-cards/elements__no-cards.css");
 
 @import url("./blocks/element/element.css");
 @import url("./blocks/element/__delete/element__delete.css");
@@ -69,3 +69,21 @@
 
 @import url("./blocks/footer/footer.css");
 @import url("./blocks/footer/__copyright/footer__copyright.css");
+
+:root {
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 0.25rem;
+}

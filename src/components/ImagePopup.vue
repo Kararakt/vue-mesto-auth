@@ -1,28 +1,23 @@
-<script setup>
-import { computed } from 'vue';
+<script setup lang="ts">
+import { CardData } from '../models/models';
 
 import MyPopup from './UI/MyPopup.vue';
 
-const emit = defineEmits(['update:modelValue']);
+interface Props {
+  card: Partial<CardData>;
+  modelValue: boolean;
+  onClose: () => void;
+}
 
-const props = defineProps({
-  card: {
-    type: [Object, null],
-    required: true,
-  },
-  modelValue: {
-    type: Boolean,
-    required: true,
-  },
-  onClose: {
-    type: Function,
-    required: true,
-  },
-});
+const emit = defineEmits<{
+  (event: 'update:modelValue', value: boolean): void;
+}>();
+
+const props = defineProps<Props>();
 
 const modelUpdate = computed({
   get: () => props.modelValue,
-  set: (newValue) => emit('update:modelValue', newValue),
+  set: (newValue: boolean) => emit('update:modelValue', newValue),
 });
 </script>
 
@@ -32,6 +27,7 @@ const modelUpdate = computed({
     @closePopup="onClose"
     customClass="popup__image-container"
     class="popup_type_image"
+    v-if="card !== null"
   >
     <template #children>
       <img :src="card.link" :alt="`Фото ${card.name}`" class="popup__image" />

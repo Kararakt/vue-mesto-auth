@@ -1,24 +1,25 @@
+import { UserData } from './../models/models';
 import { request } from './utils';
 
 const BASE_URL = 'https://auth.nomoreparties.co';
-const headers = {
+const headers: HeadersInit = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
 };
 
-export const authorize = (password, email) => {
+export const authorize = (user: UserData): Promise<Response> => {
   return request(`${BASE_URL}/signin`, {
     method: 'POST',
     headers,
-    body: JSON.stringify({ password, email }),
+    body: JSON.stringify({ password: user.password, email: user.email }),
   });
 };
 
-export const register = (password, email) => {
+export const register = (user: UserData): Promise<Response> => {
   return request(`${BASE_URL}/signup`, {
     method: 'POST',
     headers,
-    body: JSON.stringify({ password, email }),
+    body: JSON.stringify({ password: user.password, email: user.email }),
   });
 };
 

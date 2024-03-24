@@ -1,23 +1,17 @@
-<script setup>
-const emit = defineEmits(['click']);
+<script setup lang="ts">
+interface Props {
+  type: 'button' | 'submit' | 'reset';
+  textButton?: string;
+  disabled?: boolean;
+  ariaLabel?: string;
+}
 
-const props = defineProps({
-  type: {
-    type: String,
-    required: true,
-  },
-  textButton: {
-    type: String,
-    default: '',
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  ariaLabel: {
-    type: String,
-    default: '',
-  },
+const emit = defineEmits<{ (event: 'click'): void }>();
+
+withDefaults(defineProps<Props>(), {
+  textButton: '',
+  disabled: false,
+  ariaLabel: '',
 });
 
 const handleClickButton = () => emit('click');

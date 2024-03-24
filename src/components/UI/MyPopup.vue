@@ -1,32 +1,31 @@
-<script setup>
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
-
+<script setup lang="ts">
 import MyButton from './MyButton.vue';
 
-const emits = defineEmits(['closePopup', 'update:modelValue']);
+interface Props {
+  modelValue: boolean;
+  customClass?: string;
+}
 
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false,
-  },
-  customClass: {
-    type: String,
-    default: '',
-  },
+const emits = defineEmits<{
+  (event: 'closePopup'): void;
+  (event: 'update:modelValue', value: boolean): void;
+}>();
+
+const props = withDefaults(defineProps<Props>(), {
+  customClass: '',
 });
 
-const popup = ref(null);
+const popup = ref<HTMLElement | null>(null);
 
 const closePopup = () => emits('closePopup');
 
-const handleCloseByEsc = (event) => {
+const handleCloseByEsc = (event: KeyboardEvent) => {
   if (event.key === 'Escape' && modelUpdate.value) {
     closePopup();
   }
 };
 
-const handleCloseByOverlay = (event) => {
+const handleCloseByOverlay = (event: MouseEvent) => {
   if (event.target === popup.value) {
     closePopup();
   }
@@ -34,20 +33,24 @@ const handleCloseByOverlay = (event) => {
 
 const modelUpdate = computed({
   get: () => props.modelValue,
-  set: (newValue) => emits('update:modelValue', newValue),
+  set: (newValue: boolean) => emits('update:modelValue', newValue),
 });
 
-onMounted(() => {
+const addEventListener = () => {
   document.addEventListener('keydown', handleCloseByEsc);
 
   document.addEventListener('click', handleCloseByOverlay);
-});
+};
 
-onUnmounted(() => {
+const removeEventListener = () => {
   document.removeEventListener('keydown', handleCloseByEsc);
 
   document.removeEventListener('click', handleCloseByOverlay);
-});
+};
+
+onMounted(addEventListener);
+
+onUnmounted(removeEventListener);
 
 watch(modelUpdate, () => {
   document.body.style.overflowY = modelUpdate.value ? 'hidden' : 'auto';

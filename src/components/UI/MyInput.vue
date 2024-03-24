@@ -1,51 +1,33 @@
-<script setup>
-import { computed } from 'vue';
+<script setup lang="ts">
+interface Props {
+  modelValue?: string;
+  type: string;
+  name: string;
+  placeholder: string;
+  minlength?: number;
+  maxlength?: number;
+  handleInput: (event: Event) => void;
+  error: string | null;
+  confirm?: boolean;
+  customClass?: string;
+}
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<{
+  (event: 'update:modelValue', value: string): void;
+}>();
 
-const props = defineProps({
-  modelValue: {
-    type: String,
-    default: '',
-  },
-  type: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  placeholder: {
-    type: String,
-    required: true,
-  },
-  minLength: {
-    type: Number,
-  },
-  maxLength: {
-    type: Number,
-  },
-  handleInput: {
-    type: Function,
-  },
-  error: {
-    type: String,
-    default: null,
-  },
-  confirm: {
-    type: Boolean,
-    default: false,
-  },
-  customClass: {
-    type: String,
-    default: '',
-  },
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: '',
+  minlength: 0,
+  maxlength: Infinity,
+  error: '',
+  confirm: false,
+  customClass: '',
 });
 
 const modelUpdate = computed({
   get: () => props.modelValue,
-  set: (newValue) => emit('update:modelValue', newValue),
+  set: (newValue: string) => emit('update:modelValue', newValue),
 });
 </script>
 
@@ -57,8 +39,8 @@ const modelUpdate = computed({
       :type="type"
       :name="name"
       :placeholder="placeholder"
-      :minlength="minLength"
-      :maxlength="maxLength"
+      :minlength="minlength"
+      :maxlength="maxlength"
       autocomplete="off"
       required
       :class="[

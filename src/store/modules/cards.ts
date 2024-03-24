@@ -1,18 +1,30 @@
+import { Commit } from 'vuex/types/index.js';
+import user from './user';
+
 import {
   getInitialCards,
   deleteCard,
   changeLikeCardStatus,
   addCard,
 } from '../../utils/api';
+import { CardData } from '../../models/models';
 
-const state = {
+interface RootState {
+  user: typeof user.state;
+}
+
+interface State {
+  cards: CardData[];
+}
+
+const state: State = {
   cards: [],
 };
 
 const getters = {};
 
 const actions = {
-  async getCards({ commit }) {
+  async getCards({ commit }: { commit: Commit }) {
     getInitialCards()
       .then((cards) => {
         commit('setCards', cards);
@@ -22,7 +34,10 @@ const actions = {
       });
   },
 
-  async deleteCard({ commit, state }, { cardId, callback }) {
+  async deleteCard(
+    { commit, state }: { commit: Commit; state: State },
+    { cardId, callback }: { cardId: string; callback: () => void }
+  ) {
     deleteCard(cardId)
       .then(() => {
         const updatedCards = state.cards.filter((card) => card._id !== cardId);
@@ -34,8 +49,15 @@ const actions = {
       });
   },
 
-  async likeCard({ state, rootState, commit }, card) {
-    const isLiked = card.likes.some((i) => i._id === rootState.user.user._id);
+  async likeCard(
+    {
+      state,
+      rootState,
+      commit,
+    }: { state: State; rootState: RootState; commit: Commit },
+    card: CardData
+  ) {
+    const isLiked = card.likes.some((i) => i._id === rootState.user.user?._id);
 
     changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -49,7 +71,10 @@ const actions = {
       });
   },
 
-  async addCard({ state, commit }, { card, callback }) {
+  async addCard(
+    { state, commit }: { state: State; commit: Commit },
+    { card, callback }: { card: CardData; callback: () => void }
+  ) {
     addCard(card.name, card.link)
       .then((newCard) => {
         commit('setCards', [newCard, ...state.cards]);
@@ -62,7 +87,7 @@ const actions = {
 };
 
 const mutations = {
-  setCards(state, cards) {
+  setCards(state: State, cards: CardData[]) {
     state.cards = cards;
   },
 };

@@ -1,33 +1,28 @@
-<script setup>
-import { computed, watch } from 'vue';
-
+<script setup lang="ts">
 import { useFormAndValidation } from '../composables/useFormAndValidation.js';
 
 import MyPopup from './UI/MyPopup.vue';
 import MyButton from './UI/MyButton.vue';
 import MyInput from './UI/MyInput.vue';
 
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    required: true,
-  },
-  onUpdateAvatar: {
-    type: Function,
-    required: true,
-  },
-  onClose: {
-    type: Function,
-    required: true,
-  },
-});
+interface Props {
+  modelValue: boolean;
+  onUpdateAvatar: (data: { avatar: string }) => void;
+  onClose: () => void;
+}
+
+const emit = defineEmits<{
+  (event: 'update:modelValue', value: boolean): void;
+}>();
+
+const props = defineProps<Props>();
 
 const { values, handleChange, errors, isFieldValid, isValid, resetForm } =
   useFormAndValidation();
 
 const modelUpdate = computed({
   get: () => props.modelValue,
-  set: (newValue) => emit('update:modelValue', newValue),
+  set: (newValue: boolean) => emit('update:modelValue', newValue),
 });
 
 const handleSubmit = () => {
@@ -36,8 +31,8 @@ const handleSubmit = () => {
   });
 };
 
-watch(modelUpdate, () => {
-  if (props.modelValue) {
+watch(modelUpdate, (newValue: boolean) => {
+  if (newValue) {
     resetForm();
   }
 });

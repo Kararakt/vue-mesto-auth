@@ -28,7 +28,7 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _from, next) => {
   const loggedIn = computed(() => store.state.user.loggedIn).value;
 
   if (!loggedIn && to.meta.requiredAuth) {

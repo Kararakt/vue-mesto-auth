@@ -18,13 +18,8 @@
 - Vite
 - HTML
 - CSS
-<<<<<<< HEAD
 - TypeScript
-- Vue
-=======
-- JavaScript
 - Vue 3
->>>>>>> ab4eb7679c6f16c263447bbea637e5eb34e35cda
 - Vuex
 
 ## Требования

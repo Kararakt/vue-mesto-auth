@@ -18,8 +18,13 @@
 - Vite
 - HTML
 - CSS
+<<<<<<< HEAD
 - TypeScript
 - Vue
+=======
+- JavaScript
+- Vue 3
+>>>>>>> ab4eb7679c6f16c263447bbea637e5eb34e35cda
 - Vuex
 
 ## Требования
@@ -32,7 +37,7 @@
 ```sh
 git@github.com:Kararakt/vue-mesto-auth.git
 ```
-2. Установите все необходимые NPM пакеты
+2. Установите все необходимые PNPM пакеты
 ```sh
 pnpm install
 ```

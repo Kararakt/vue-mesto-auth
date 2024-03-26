@@ -5,6 +5,16 @@ import Components from 'unplugin-vue-components/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+        @import "./src/scss/_variables.scss";
+        @import "./src/scss/_mixins.scss";
+        `,
+      },
+    },
+  },
   plugins: [
     vue(),
     AutoImport({

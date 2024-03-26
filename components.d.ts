@@ -7,6 +7,20 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AddPlacePopup: typeof import('./src/components/AddPlacePopup/AddPlacePopup.vue')['default']
+    EditAvatarPopup: typeof import('./src/components/EditAvatarPopup/EditAvatarPopup.vue')['default']
+    EditProfilePopup: typeof import('./src/components/EditProfilePopup/EditProfilePopup.vue')['default']
+    Footer: typeof import('./src/components/Footer/Footer.vue')['default']
+    Form: typeof import('./src/components/UI/MyForm/Form.vue')['default']
+    Header: typeof import('./src/components/Header/Header.vue')['default']
+    ImagePopup: typeof import('./src/components/ImagePopup/ImagePopup.vue')['default']
+    InfoTooltip: typeof import('./src/components/InfoTooltip/InfoTooltip.vue')['default']
+    Login: typeof import('./src/components/Login/Login.vue')['default']
+    MyForm: typeof import('./src/components/UI/MyForm/MyForm.vue')['default']
+    PopupWithConfirm: typeof import('./src/components/PopupWithConfirm/PopupWithConfirm.vue')['default']
+    PopupWithForm: typeof import('./src/components/PopupWithForm/PopupWithForm.vue')['default']
+    Profile: typeof import('./src/components/Profile/Profile.vue')['default']
+    Register: typeof import('./src/components/Register/Register.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

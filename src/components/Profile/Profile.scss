@@ -1,0 +1,147 @@
+$dimension-125: 1.125rem;
+$dimension-5: 1.5rem;
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: $max-width-55;
+  padding: $padding-lg 0 3.125rem;
+
+  @media screen and (max-width: 56.25rem) {
+    margin: 0 1.1875rem;
+  }
+
+  @media screen and (max-width: $screen-md) {
+    flex-direction: column;
+    gap: 2.1rem;
+    padding: 2.625rem 0 $padding-md;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 1.875rem;
+
+    @media screen and (max-width: $screen-sm) {
+      max-width: $max-width-17;
+      flex-direction: column;
+      text-align: center;
+      gap: 1.625rem;
+    }
+  }
+
+  &__image {
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    height: $dimension-md;
+    width: $dimension-md;
+  }
+
+  &__avatar-edit {
+    background-image: url("/edit-avatar.svg");
+    background-color: $black-light;
+    background-size: 1.625rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: $dimension-full;
+    height: $dimension-full;
+    opacity: 0;
+    padding: 0.0625rem 0.375rem;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @media screen and (max-width: $screen-sm) {
+      max-width: 17.625rem;
+      gap: $gap-xs;
+    }
+  }
+
+  &__editor {
+    display: flex;
+    align-items: baseline;
+
+    @media screen and (max-width: $screen-sm) {
+      margin-left: $margin-sm;
+    }
+  }
+
+  &__name {
+    max-width: 20.625rem;
+    font-size: 2.625rem;
+    font-weight: $font-weight-medium;
+    line-height: 1.14;
+    margin: 0 1.125rem 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    @media screen and (max-width: $screen-sm) {
+      max-width: 13.4375rem;
+      font-size: 1.6875rem;
+      margin-right: 0.625rem;
+    }
+  }
+
+  &__edit-button {
+    height: $dimension-5;
+    width: $dimension-5;
+    background-image: url("/edit-button.svg");
+    background-color: transparent;
+
+    &:hover {
+      opacity: $opacity-60;
+    }
+
+    @media screen and (max-width: $screen-sm) {
+      height: $dimension-125;
+      width: $dimension-125;
+      background-size: cover;
+    }
+  }
+
+  &__job {
+    max-width: 23.25rem;
+    font-size: $font-size-lg;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: $font-weight-normal;
+    margin: 0;
+
+    @media screen and (max-width: $screen-sm) {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__add-button {
+    height: $dimension-b-sm;
+    width: 9.375rem;
+    background-image: url("/add-button.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: $border-sm solid $white;
+    border-radius: $border-radius-xs;
+    background-size: 1.375rem;
+
+    &:hover {
+      opacity: $opacity-60;
+    }
+
+    @media screen and (max-width: $screen-md) {
+      width: $dimension-lg;
+      background-size: 1rem;
+    }
+  }
+}

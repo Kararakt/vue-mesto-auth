@@ -1,0 +1,31 @@
+.authorization {
+  max-width: 22.375rem;
+  margin: 0 auto;
+  padding-top: $padding-xl;
+  padding-bottom: 1rem;
+
+  @media screen and (max-width: $screen-xs) {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+    padding-top: $padding-lg;
+  }
+
+  &__button {
+    background-color: transparent;
+    color: $gray;
+
+    &_active,
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 3.125rem;
+    padding: 0;
+    list-style: none;
+    gap: 1rem;
+  }
+}

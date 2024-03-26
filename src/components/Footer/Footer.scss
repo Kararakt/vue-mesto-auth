@@ -1,0 +1,24 @@
+.footer {
+  margin: 0 auto;
+  max-width: $max-width-55;
+  width: $dimension-full;
+  padding-bottom: $padding-xl;
+
+  @media screen and (max-width: $screen-sm) {
+    padding-bottom: $padding-md;
+  }
+
+  &__copyright {
+    color: hsl(0, 0%, 33%);
+    font-size: $font-size-lg;
+    margin: 0;
+
+    @media screen and (max-width: $screen-xl) {
+      margin: 0 0.5rem;
+    }
+
+    @media screen and (max-width: $screen-sm) {
+      font-size: $font-size-sm;
+    }
+  }
+}

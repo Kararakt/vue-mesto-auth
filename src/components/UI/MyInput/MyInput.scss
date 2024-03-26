@@ -1,0 +1,44 @@
+.input {
+  display: flex;
+  flex-direction: column;
+
+  &__field {
+    font-size: $font-size-sm;
+    border: 0;
+    outline: 0;
+    border-bottom: $border-xs solid hsla(0, 0%, 0%, 0.2);
+    line-height: 1.6875rem;
+    @include transition;
+
+    &_type {
+      &_auth {
+        border-bottom: $border-sm solid hsl(0, 0%, 80%);
+        background-color: transparent;
+        color: $white;
+      }
+
+      &_error {
+        border-color: $red;
+      }
+
+      &_confirm {
+        border-color: hsl(120, 100%, 25%);
+      }
+    }
+
+    &::placeholder {
+      color: hsl(0, 0%, 77%);
+    }
+
+    &:focus {
+      border-color: hsl(229, 89%, 58%);
+    }
+  }
+
+  &__error {
+    color: $red;
+    font-size: $font-size-xs;
+    margin: 0.3125rem 0 0;
+    min-height: 1.875rem;
+  }
+}

@@ -20,3 +20,14 @@ export interface Owner {
   cohort: string;
   email?: string;
 }
+
+export interface CardActions {
+  onCardClick: (card: CardData) => void;
+  onCardLike: (card: CardData) => void;
+  onCardDelete: (card: CardData) => void;
+}
+
+export type CardAdd = { name: string; link: string };
+
+export type UserProfile = { name: string; about: string };
+export type UserAvatar = { avatar: string };

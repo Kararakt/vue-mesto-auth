@@ -1,0 +1,8 @@
+.button {
+  font-size: $font-size-lg;
+  border: 0;
+  padding: 0;
+  line-height: $line-height-12;
+  @include transition;
+  cursor: pointer;
+}

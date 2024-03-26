@@ -1,0 +1,27 @@
+$gap: 1.25rem;
+
+.card-list {
+  max-width: $max-width-55;
+  padding-bottom: 4.125rem;
+  margin: 0 auto;
+
+  @media screen and (max-width: $screen-sm) {
+    padding-bottom: 3rem;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 17.625rem);
+    grid-auto-rows: 22.5625rem;
+    gap: $gap 1.0625rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @media screen and (max-width: $screen-xl) {
+      justify-content: center;
+      margin: 0 1.1875rem;
+      gap: $gap;
+    }
+  }
+}

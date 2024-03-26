@@ -1,0 +1,127 @@
+$dimension-vw: 75vw;
+
+@mixin common-transition {
+  $properties: opacity;
+  $duration: 0.5s;
+  $timing-function: ease;
+
+  @include transition($properties, $duration, $timing-function);
+}
+
+.popup {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: $dimension-full;
+  height: $dimension-full;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_type_image {
+    background-color: hsla(0, 0%, 0%, 0.9);
+  }
+
+  &__content {
+    background-color: $white;
+    color: $black;
+    max-width: 26.875rem;
+    width: $dimension-full;
+    border-radius: $border-radius-md;
+    box-shadow: 0 0 1.5625rem hsla(0, 0%, 0%, 0.15);
+    padding: 2.125rem $padding-md 2.3125rem $padding-md;
+    box-sizing: border-box;
+    position: relative;
+
+    @media screen and (max-width: $screen-sm) {
+      padding: 1.5625rem 1.375rem;
+      margin: 0 $margin-xs;
+    }
+  }
+
+  &__image-container {
+    background-color: transparent;
+    max-height: $dimension-vw;
+    max-width: $dimension-vw;
+    width: auto;
+    position: relative;
+    border-radius: 0;
+    padding: 0;
+    gap: $gap-xs;
+  }
+
+  &__state-image {
+    height: $dimension-md;
+    width: $dimension-md;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  &__image {
+    max-height: $dimension-vw;
+    max-width: $dimension-vw;
+    display: block;
+    object-fit: cover;
+  }
+
+  &__caption {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-normal;
+    margin: 0;
+  }
+
+  &__title {
+    color: $black;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-black;
+    margin: 0 0 2.8125rem 0;
+
+    @media screen and (max-width: $screen-sm) {
+      font-size: $font-size-lg;
+      margin-bottom: 3.9rem;
+    }
+
+    &_type_tool-tip {
+      margin: 2rem 0 1.4375rem;
+      text-align: center;
+    }
+  }
+
+  &__close {
+    height: $dimension-sm;
+    width: $dimension-sm;
+    background-image: url("/close-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    top: -2.5rem;
+    right: -2.5rem;
+
+    &:hover {
+      opacity: $opacity-60;
+    }
+
+    @media screen and (max-width: $screen-sm) {
+      height: 1.25rem;
+      width: 1.25rem;
+      background-size: cover;
+      top: -2.25rem;
+      right: 0;
+    }
+  }
+
+  &-enter-active,
+  &-leave-active {
+    @include common-transition;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    @include common-transition;
+    opacity: 0;
+  }
+}

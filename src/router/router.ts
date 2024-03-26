@@ -8,11 +8,11 @@ const routes = [
     meta: {
       requiredAuth: true,
     },
-    component: () => import('../pages/HomePage.vue'),
+    component: () => import('../pages/HomePage/HomePage.vue'),
   },
   {
     path: '/authorization',
-    component: () => import('../pages/AuthorizationPage.vue'),
+    component: () => import('../pages/AuthorizationPage/AuthorizationPage.vue'),
   },
   {
     path: '/:catchAll(.*)',

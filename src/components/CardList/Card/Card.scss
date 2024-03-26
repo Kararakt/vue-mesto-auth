@@ -1,0 +1,77 @@
+$height: 1.188rem;
+
+.card {
+  background-color: $white;
+  border-radius: $border-radius-md;
+  position: relative;
+
+  &__delete {
+    height: $height;
+    width: $dimension-xs;
+    background-image: url("/delete.svg");
+    background-color: transparent;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+
+    &:hover {
+      opacity: $opacity-50;
+    }
+  }
+
+  &__image {
+    height: $dimension-lg;
+    width: $dimension-lg;
+    display: block;
+    object-fit: cover;
+    border-radius: $border-radius-md $border-radius-md 0 0;
+    cursor: pointer;
+    color: $black;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5625rem 0.9375rem 0 1.3125rem;
+  }
+
+  &__title {
+    color: $black;
+    max-width: 11.5625rem;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-black;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__like-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__heart {
+    height: $height;
+    width: 1.375rem;
+    background-image: url("/heart.svg");
+    background-color: transparent;
+
+    &:hover {
+      opacity: $opacity-50;
+    }
+
+    &_active {
+      background-image: url("/heart-active.svg");
+    }
+  }
+
+  &__count {
+    color: $black;
+    font-size: 0.8125rem;
+    line-height: 0.9825rem;
+    margin-top: 0.1875rem;
+    text-align: center;
+  }
+}

@@ -1,0 +1,53 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__submit-button {
+    background-color: $black;
+    color: $white;
+    height: $dimension-b-sm;
+    font-size: $font-size-lg;
+    border-radius: $border-radius-xs;
+    margin-top: 0.8125rem;
+
+    @media screen and (max-width: $screen-sm) {
+      height: 2.875rem;
+      font-size: $font-size-sm;
+      margin-top: 1.35rem;
+    }
+
+    &:hover {
+      background-color: $black-light;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: $black;
+      border: $border-xs solid $black;
+      cursor: not-allowed;
+      opacity: 0.2;
+    }
+
+    &_type_auth {
+      background-color: $white;
+      color: $black;
+      box-shadow: 0 0.25rem 0.25rem hsla(0, 0%, 0%, 0.25);
+      margin-top: 11.3125rem;
+
+      @media screen and (max-width: $screen-lg) {
+        margin-top: 8.625rem;
+      }
+
+      &:hover {
+        opacity: 0.85;
+        background-color: $white;
+      }
+
+      &:disabled {
+        background-color: $white;
+        border: 0;
+        opacity: 0.5;
+      }
+    }
+  }
+}

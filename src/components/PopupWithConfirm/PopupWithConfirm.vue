@@ -3,6 +3,8 @@ import './PopupWithConfirm.scss';
 
 import { CardData } from '../../models/models';
 
+import PopupWithForm from '../PopupWithForm/PopupWithForm.vue';
+
 interface Props {
   card: CardData | null;
   modelValue: boolean;

@@ -1,5 +1,3 @@
-$dimension-vw: 75vw;
-
 @mixin common-transition {
   $properties: opacity;
   $duration: 0.5s;
@@ -43,7 +41,8 @@ $dimension-vw: 75vw;
 
   &__image-container {
     background-color: transparent;
-    max-height: $dimension-vw;
+    max-height: 75vh;
+    max-width: 75vw;
     width: auto;
     position: relative;
     border-radius: 0;
@@ -59,16 +58,17 @@ $dimension-vw: 75vw;
   }
 
   &__image {
-    max-height: $dimension-vw;
-    max-width: $dimension-full;
+    max-height: 75vh;
+    max-width: 75vw;
     display: block;
     object-fit: cover;
   }
 
   &__caption {
+    color: $white;
     font-size: $font-size-xs;
     font-weight: $font-weight-normal;
-    margin: 0;
+    margin: 0.625rem 0 0;
   }
 
   &__title {

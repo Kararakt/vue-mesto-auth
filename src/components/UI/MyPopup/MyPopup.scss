@@ -44,12 +44,10 @@ $dimension-vw: 75vw;
   &__image-container {
     background-color: transparent;
     max-height: $dimension-vw;
-    max-width: $dimension-vw;
     width: auto;
     position: relative;
     border-radius: 0;
     padding: 0;
-    gap: $gap-xs;
   }
 
   &__state-image {
@@ -62,7 +60,7 @@ $dimension-vw: 75vw;
 
   &__image {
     max-height: $dimension-vw;
-    max-width: $dimension-vw;
+    max-width: $dimension-full;
     display: block;
     object-fit: cover;
   }
